@@ -1,27 +1,27 @@
 import { notFound } from "next/navigation"
-import LiveTimestamp from "../LiveTimestamp"
+import LiveTimestamp from "../../components/LiveTimestamp"
+import { getArticleById } from "@/lib/data"
 
 type Props = {
-    searchParams?: Article
+    params: { id: string }
 }
 
-function ArticlePage({ searchParams }: Props) {
-    console.log(searchParams)
+async function ArticlePage({ params }: Props) {
     if (
-        (searchParams && Object.entries(searchParams).length === 0) ||
-        !searchParams
+        (params && Object.entries(params).length === 0) ||
+        !params
     ) {
         return notFound()
     }
 
-    const article: Article = searchParams
+    const article: Article = await getArticleById(params.id)
 
     return (
         <article className="max-w-6xl mx-auto flex justify-between items-center py-8">
             <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10">
-                {article.image_url && (
+                {article.images[0].url && (
                     <img
-                        src={article.image_url}
+                        src={article.images[0].url}
                         alt={article.title}
                         className="h-50 max-w-md mx-auto md:max-w-lg lg:max-w-xl w-full object-cover rounded-lg shadow-md"
                     />
@@ -30,15 +30,15 @@ function ArticlePage({ searchParams }: Props) {
                 <div className="px-10">
                     <h1 className="headerTitle px-0 no-underline pb-2">{article.title}</h1>
                     <div className="flex divide-x-2 space-x-4">
-                        <h2 className="pl-0">Category: {article.category}</h2>
-                        <h2 className="pl-4">By: {article.creator}</h2>
-                        <h2 className="pl-4">Source: {article.source_url}</h2>
+                        <h2 className="pl-0">Category: {article.categories.join(', ')}</h2>
+                        <h2 className="pl-4">By: {article.author.name}</h2>
+                        <h2 className="pl-4">Source: {article.source.name}</h2>
                         <p className="pl-4">
-                            Published: <LiveTimestamp time={article.pubDate} />
+                            Published:
                         </p>
                     </div>
 
-                    <p className="pt-4">{article.description}</p>
+                    <p className="pt-4">{article.content}</p>
 
                 </div>
             </section>

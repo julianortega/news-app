@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import Header from "./Header"
-import Providers from "./Providers"
+import Header from "./components/Header"
+import Providers from "./components/Providers"
 import { ThemeProvider } from "next-themes"
-import Footer from "./Footer"
+import Footer from "./components/Footer"
 
 export const metadata: Metadata = {
   title: "My Blog",
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
 
-      <body className="bg-gray-100 dark:bg-slate-900 transition-all duration-700">
+      <body className="bg-gray-100 dark:bg-gray-950 transition-all duration-700">
         <Providers>
           <Header />
           <main>

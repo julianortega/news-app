@@ -1,12 +1,12 @@
-import fetchNews from "../lib/fetchNews"
-import NewsList from "./NewsList"
+import { getArticles } from "@/lib/data"
+import NewsList from "./components/NewsList"
 
 async function Homepage() {
-  const news: NewsResponse = await fetchNews(undefined, undefined, false)
+  const articles: Article[] = await getArticles()
 
   return (
     <div className="max-w-7xl mx-auto">
-      <NewsList news={news} />
+      <NewsList articles={JSON.parse(JSON.stringify(articles))} />
     </div>
   )
 }

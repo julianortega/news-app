@@ -1,52 +1,31 @@
 type Article = {
-    ai_region: string
-    ai_tag: string
-    article_id: string
-    category: Category[]
-    content: string
-    country: string[]
-    creator: string[]
-    description: string
-    image_url: string
-    keywords: string[]
-    language: string
-    link: string
-    pubDate: string
-    sentiment: string
-    sentiment_stats: string
-    source_icon: string
-    source_id: string
-    source_priority: number
-    source_url: string
+    _id: string
     title: string
-}
-
-type NewsResponse = {
-
-    results: Article[]
-    status: string
-    totalResults: number
-    nextPage: string
-
+    content: string
+    author: Author
+    categories: string[]
+    tags: string[]
+    source: Source
+    images: Images[]
 
 }
 
-type Category =
-    | "world"
-    | "top"
-    | "tourism"
-    | "health"
-    | "science"
-    | "sports"
-    | "business"
-    | "entertainment"
-    | "technology"
-    | "politics"
-    | "education"
-    | "domestic"
-    | "environment"
-    | "food"
-    | "lifestyle"
-    | "other"
-    | "crime";
+type Author = {
+    name: string
+    email: string
+}
 
+type Source = {
+    name: string
+    url: string
+}
+
+type Images = {
+    url: string
+    caption: string
+    altText: string
+}
+
+type ArticleResponse = {
+    article: Article[]
+}

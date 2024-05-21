@@ -1,5 +1,5 @@
-import fetchNews from "@/lib/fetchNews"
-import NewsList from "../NewsList"
+import NewsList from "../components/NewsList"
+import { getArticlesBySearch } from "@/lib/data"
 
 type Props = {
     searchParams?: { term: string }
@@ -7,12 +7,12 @@ type Props = {
 
 async function SearchPage({ searchParams }: Props) {
 
-    const news: NewsResponse = await fetchNews(undefined, searchParams?.term, true)
+    const articles: Article[] = await getArticlesBySearch(searchParams?.term)
 
     return (
         <div className="max-w-7xl mx-auto">
             <h1 className="headerTitle">Search Results for: {searchParams?.term}</h1>
-            <NewsList news={news} />
+            <NewsList articles={JSON.parse(JSON.stringify(articles))} />
         </div>
     )
 }

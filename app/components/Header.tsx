@@ -11,7 +11,7 @@ function Header() {
         <Bars3Icon className="h-8 w-8 cursor-pointer" />
         <Link href="/" prefetch={false}>
           <h1 className="font-serif text-4xl text-center">
-            The <span className="underline decoration-6 decoration-orange-400">BRUTAL</span> News
+            The <span className="underline decoration-6 decoration-cyan-500">BRUTAL</span> News
           </h1>
         </Link>
 
@@ -19,7 +19,7 @@ function Header() {
 
           <DarkModeButton />
 
-          <button className="hidden md:inline bg-slate-900 text-white px-4 lg:px-8 py-2 lg:py-4 rounded-full dark:bg-slate-800">
+          <button className="hidden md:inline bg-cyan-500 text-white px-4 lg:px-8 py-2 lg:py-4 rounded-full hover:bg-cyan-600 duration-200">
             Subscribe Now
           </button>
         </div>
