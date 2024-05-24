@@ -1,7 +1,8 @@
 type Article = {
     _id: string
     title: string
-    content: string
+    description: string
+    datePublished: string
     author: Author
     categories: string[]
     tags: string[]

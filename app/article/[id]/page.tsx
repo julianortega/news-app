@@ -34,11 +34,11 @@ async function ArticlePage({ params }: Props) {
                         <h2 className="pl-4">By: {article.author.name}</h2>
                         <h2 className="pl-4">Source: {article.source.name}</h2>
                         <p className="pl-4">
-                            Published:
+                            Published: <LiveTimestamp time={article.datePublished} />
                         </p>
                     </div>
 
-                    <p className="pt-4">{article.content}</p>
+                    <p className="pt-4">{article.description}</p>
 
                 </div>
             </section>

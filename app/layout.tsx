@@ -2,12 +2,11 @@ import type { Metadata } from "next"
 import "./globals.css"
 import Header from "./components/Header"
 import Providers from "./components/Providers"
-import { ThemeProvider } from "next-themes"
 import Footer from "./components/Footer"
 
 export const metadata: Metadata = {
-  title: "My Blog",
-  description: "A blog about technology and programming.",
+  title: "The BRUTAL News",
+  description: "News for the BRUTAL people",
 }
 
 export default function RootLayout({
